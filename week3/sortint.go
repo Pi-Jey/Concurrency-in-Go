@@ -1,21 +1,17 @@
 package main
 
-// Compulsory package,
-// the only one generating an executable
-
 import (
-	"bufio"     // Library to implement buffered I/O"
-	"fmt"       // Format library, including I/O methods
-	"log"       // Library to handle logging messages
-	"math/rand" // Package to implement pseudo-random number generators.
-	"os"        // Interface to operating system functionality
-	"strconv"   // Conversion type from/to strings
-	"strings"   // Library to manipulate strings
-	"sync"      // Library providing basic synchronization primitives
+	"bufio"     
+	"fmt"      
+	"log"       
+	"math/rand" 
+	"os"        
+	"strconv"   
+	"strings"   
+	"sync"      
 )
 
-// ReadValues function
-// It reads integer values from console and store them into a slice.
+// ReadValues function reads integer values from console and store them into a slice.
 // Returns an error if something went wrong.
 func ReadValues() (numbers []int, err error) {
 	fmt.Println("Please input numbers(separate with space): ")
@@ -34,8 +30,7 @@ func ReadValues() (numbers []int, err error) {
 	return
 }
 
-// QuickSort function.
-// It takes a slice as parameter and transform it in its sorted version.
+// QuickSort function takes a slice as parameter and transform it in its sorted version.
 // Defined as a recursive function.
 func QuickSort(a []int) {
 	if len(a) < 2 {
@@ -61,8 +56,7 @@ func QuickSort(a []int) {
 	QuickSort(a[left+1:])
 }
 
-// Sort function
-// It is a wrapper of the QuickSort sorting function to sort integers.
+// Sort function is a wrapper of the QuickSort sorting function to sort integers.
 // Takes a WaitGroup as argument, since it will be called in a goroutine.
 func Sort(numbers []int, wg *sync.WaitGroup) {
 	QuickSort(numbers)
@@ -72,8 +66,7 @@ func Sort(numbers []int, wg *sync.WaitGroup) {
 	}
 }
 
-// CreatePartitions function
-// It takes a slice and an int k as arguments and returns k partitions of the
+// CreatePartitions function takes a slice and an int k as arguments and returns k partitions of the
 // original slice, stored in a slice of slices.
 func CreatePartitions(numbers []int, k int) (partitions [][]int) {
 	var n = len(numbers)
@@ -88,8 +81,7 @@ func CreatePartitions(numbers []int, k int) (partitions [][]int) {
 	return
 }
 
-// MergePartitions function
-// It takes two sorted slices as arguments and returns a sorted merge of
+// MergePartitions function takes two sorted slices as arguments and returns a sorted merge of
 // the two.
 func MergePartitions(s1 []int, s2 []int) (merged []int) {
 	var n1, n2 int = len(s1), len(s2)
